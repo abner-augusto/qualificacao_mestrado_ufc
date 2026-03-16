@@ -18,7 +18,6 @@ O sistema simula cenários de risco conforme a **NR-18** (Norma Regulamentadora 
 
 - Seleção e uso de EPIs (Equipamentos de Proteção Individual)
 - Trabalho em altura
-- Movimentação de cargas
 
 ### Stack tecnológica
 
