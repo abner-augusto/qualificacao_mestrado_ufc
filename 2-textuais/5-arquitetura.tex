@@ -1,0 +1,91 @@
+\chapter{Arquitetura do Software}
+\label{cap:arquitetura}
+
+Conforme apresentado nos capítulos anteriores, o Sistema de Realidade Virtual para Treinamento de Segurança em Canteiro de Obras será desenvolvido utilizando a plataforma Unity 3D, em conjunto com o Meta XR SDK, visando sua execução em dispositivos de realidade virtual imersiva como o Oculus Quest 2. A arquitetura do sistema é projetada para atender dois propósitos principais: (i) possibilitar a criação e execução de cenários de treinamento baseados em situações críticas reais do ambiente da construção civil, e (ii) viabilizar a avaliação sistemática do desempenho dos usuários, com foco na identificação de comportamentos seguros e resposta adequada aos riscos simulados.
+
+Para isso, o sistema foi estruturado em camadas modulares, separando a lógica de controle da simulação, os dados das tarefas de segurança, os mecanismos de avaliação e a interface com o usuário. Essa separação visa garantir escalabilidade, reusabilidade e facilidade de manutenção durante o desenvolvimento e em futuras expansões do protótipo.
+
+Nas seções seguintes, são detalhados os componentes principais do sistema, suas responsabilidades e as interações que viabilizam a experiência imersiva e o registro do desempenho do participante ao longo do treinamento.
+
+\section{Sistemas Principais (Core)}
+
+Responsáveis pela inicialização da sessão, controle do ciclo de vida da aplicação e orquestração de eventos:
+
+\begin{itemize}
+    \item \textbf{EventBus}: gerencia a comunicação assíncrona entre os módulos, desacoplando os componentes.
+    \item \textbf{XRSessionManager}: monitora o estado da aplicação e dispara eventos como início, pausa ou finalização da sessão.
+    \item \textbf{SceneLoader}: carrega dinamicamente as cenas dos cenários de treinamento.
+\end{itemize}
+
+\section{Camada de Dados (ScriptableObjects)}
+
+Define e organiza as unidades de treinamento:
+
+\begin{itemize}
+    \item \textbf{SafetyTask}: representa uma tarefa individual, com descrição, ação esperada, EPIs exigidos e pontuação.
+    \item \textbf{TaskGroup}: agrupa várias tarefas, permitindo sequenciamento, pré-requisitos e limitação de tempo.
+\end{itemize}
+
+\section{Lógica de Gameplay}
+
+Executa a simulação das tarefas, verifica regras e atualiza o estado do treinamento:
+
+\begin{itemize}
+    \item \textbf{TaskManager}: coordena a execução dos grupos de tarefas e controla o fluxo das atividades durante a simulação.
+    \item \textbf{RuntimeSafetyTask}: estrutura intermediária que encapsula o estado de execução de cada tarefa, permitindo o acompanhamento individual de progresso (não iniciada, em andamento, concluída com sucesso ou falha).
+    \item \textbf{PPEManager}: monitora a utilização de EPIs em tempo real, verificando se os itens exigidos estão sendo corretamente utilizados.
+    \item \textbf{ScoreManager}: calcula e atualiza a pontuação com base nas ações do usuário, penalizando erros (opcional) e premiando ações corretas.
+    \item \textbf{TimerSystem}: gerencia os limites de tempo para cada tarefa ou grupo, disparando eventos de tempo esgotado.
+\end{itemize}
+
+\section{Sistema de Avaliação de Desempenho}
+
+O sistema de avaliação foi concebido como uma camada modular integrada à aplicação desenvolvida no Unity 3D, responsável por monitorar, registrar e analisar o desempenho dos participantes durante a execução das tarefas no ambiente virtual. Sua arquitetura é composta por três componentes principais:
+
+\subsection{Coleta de Dados em Tempo Real}
+
+Durante a simulação, eventos relevantes são capturados por meio de um sistema de mensagens assíncronas gerenciado pelo \textit{EventBus}. Esse componente centraliza notificações como:
+
+\begin{itemize}
+    \item Tentativas de ações (\textit{onActionAttempt})
+    \item Conclusão ou falha de tarefas (\textit{onTaskCompleted, onTaskTimeout})
+    \item Alterações no estado dos EPIs (\textit{onPpeStateChanged})
+    \item Atualizações de tempo (\textit{onTimeUpdated})
+    \item Término da sessão (\textit{onSessionCompleted})
+\end{itemize}
+
+Esses eventos são interceptados por módulos especializados que processam os dados e os encaminham para os sistemas de pontuação e \textit{feedback}.
+
+\subsection{Sistema de Pontuação e Desempenho}
+
+A avaliação quantitativa é conduzida por meio de dois componentes principais:
+
+\begin{itemize}
+    \item \textbf{ScoreService}: contém a lógica independente para atribuição de pontos com base em ações corretas, uso adequado de EPIs e respeito aos tempos estabelecidos.
+    \item \textbf{ScoreManager}: atua como um \textit{listener} dos eventos do \textit{EventBus}, decidindo, com base nas regras definidas nos objetos \textit{SafetyTask}, se o participante cumpriu ou não os critérios esperados.
+\end{itemize}
+
+A pontuação é atualizada em tempo real e exibida no \textit{ScoreHUD}, além de ser consolidada ao final da simulação pelo \textit{SessionCompleteUI}.
+
+\subsection{Monitoramento e Exportação de Dados}
+
+Para permitir uma análise aprofundada, o sistema registra múltiplos indicadores durante a simulação:
+
+\begin{itemize}
+    \item \textbf{Logs de interação} incluem tempo de permanência por área, número de erros, decisões tomadas e alterações no estado dos objetos.
+    \item \textbf{Gravação de vídeo da sessão} (opcional, mediante consentimento) via Unity Recorder, para avaliação qualitativa posterior.
+    \item \textbf{Dados de usabilidade e imersão} (\textit{System Usability Scale} -- SUS e \textit{Presence Questionnaire} -- PQ) serão integrados via questionário externo. Os identificadores de sessão são automaticamente vinculados aos dados coletados para garantir rastreabilidade.
+    \item \textbf{SessionLogger}: componente adicional que registra todos os eventos relevantes durante a sessão, com marcação temporal, e gera automaticamente um arquivo JSON contendo o histórico de interações e um sumário final de desempenho (tempo total, tarefas concluídas, pontuação). Esse componente será usado futuramente para criar interfaces para que usuários vejam seu desempenho através de relatórios na tela e em formato PDF.
+\end{itemize}
+
+\section{Interface do Usuário (UI)}
+
+Interface desacoplada, que apenas escuta eventos e reflete o estado do sistema:
+
+\begin{itemize}
+    \item \textbf{TaskUIController}: exibe progresso e status das tarefas.
+    \item \textbf{ScoreHUD}: mostra a pontuação atual do usuário.
+    \item \textbf{TimerUI}: apresenta o tempo restante para as tarefas.
+    \item \textbf{SessionCompleteUI}: tela de encerramento com relatório de desempenho.
+    \item \textbf{MenuFollowHmd}: garante visibilidade constante da interface no campo de visão do usuário em RV.
+\end{itemize}

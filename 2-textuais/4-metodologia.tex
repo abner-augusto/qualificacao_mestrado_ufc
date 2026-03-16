@@ -1,0 +1,83 @@
+\chapter{Metodologia}
+\label{cap:metodologia}
+
+\section{Desenvolvimento do Protótipo}
+
+O desenvolvimento da Fase 1 do protótipo do sistema de treinamento em Realidade Virtual (RV) será orientado e validado por meio de consultas a especialistas em segurança do trabalho, incluindo engenheiros de segurança e instrutores de treinamentos de NR-18 e NR-35, bem como representantes de empresas e entidades do setor da construção civil, como o \gls{SENAI} e o SINDUSCON-CE.
+
+Essas consultas visam validar os principais elementos que devem ser priorizados nos cenários virtuais, considerando as principais causas de acidentes no setor, as dificuldades enfrentadas pelos instrutores na transmissão de conhecimentos e os temas de maior relevância para o público-alvo. O foco desta fase está delimitado aos riscos de quedas de altura e ao uso correto de Equipamentos de Proteção Individual (EPIs), por representarem as situações de maior impacto e maior potencial de aproveitamento das características imersivas da RV.
+
+\section{Ferramentas Tecnológicas}
+
+O sistema será desenvolvido utilizando as seguintes tecnologias:
+
+\begin{itemize}
+    \item \textbf{Plataforma:} Unity 3D
+    \item \textbf{Linguagem de Programação:} C\#
+    \item \textbf{Dispositivos:} Oculus Quest 3 ou outro dispositivo portátil de Realidade Virtual equivalente.
+\end{itemize}
+
+\section{Estrutura dos Cenários Virtuais}
+
+Os cenários de treinamento serão definidos a partir de consultas com especialistas em segurança do trabalho e representantes do setor da construção civil. Esta fase contempla dois cenários principais, alinhados às diretrizes da NR-18 e NR-35:
+
+\textbf{Cenário 1 -- Seleção de EPIs}
+
+Cena introdutória na qual o usuário é recebido por um instrutor virtual e deve selecionar os EPIs adequados para a atividade de trabalho em altura que será realizada em seguida. O objetivo é desenvolver o reconhecimento dos equipamentos obrigatórios antes da exposição ao cenário de risco.
+
+\textbf{Cenário 2 -- Trabalho em Altura}
+
+Cenário principal no qual o usuário é exposto a uma situação de trabalho em andaime com irregularidades deliberadas -- ausência ou instalação incorreta de guarda-corpos, uso inadequado do cinto de segurança e ausência de pontos de ancoragem certificados. O usuário deve identificar os riscos presentes, corrigir as irregularidades e demonstrar o uso correto dos EPIs. \textit{Feedback} imediato é fornecido a cada ação.
+
+O sistema prevê expansão modular para novos cenários em fases futuras, como queda de objetos, soterramentos e inspeção geral de canteiro, conforme validação com especialistas e parceiros institucionais.
+
+\section{Amostragem e Grupos Experimentais}
+
+A pesquisa contará com 30 participantes, divididos aleatoriamente em dois grupos:
+
+\begin{itemize}
+    \item \textbf{Grupo Experimental (RV):} Receberá o treinamento utilizando o sistema de Realidade Virtual.
+    \item \textbf{Grupo Controle (Treinamento Tradicional):} Participará do treinamento por meio de vídeo instrucional com conteúdo equivalente ao apresentado no sistema de RV.
+\end{itemize}
+
+Os participantes poderão ser trabalhadores da construção civil ou estudantes da área. Dado o caráter exploratório e pioneiro desta pesquisa no contexto brasileiro -- onde não foram identificados estudos controlados sobre RV aplicada à segurança do trabalho sob as normas regulamentadoras nacionais -- o estudo se configura como um \textbf{estudo piloto}, cujos dados fornecerão subsídios para o dimensionamento amostral de pesquisas futuras com maior poder estatístico.
+
+\section{Instrumentos de Avaliação}
+
+Os instrumentos foram selecionados de forma a cobrir as três hipóteses do estudo com o mínimo de sobrecarga para os participantes, garantindo viabilidade de aplicação em contexto de pesquisa piloto.
+
+\subsection{Instrumentos aplicados a ambos os grupos}
+
+\begin{itemize}
+    \item \textbf{Teste de Conhecimento (pré e pós-teste):} Aplicado antes e imediatamente após o treinamento, mede o ganho de conhecimento sobre procedimentos de segurança em trabalhos em altura e uso correto de EPIs. As questões serão elaboradas com base nos conteúdos dos cenários desenvolvidos e validadas por especialistas em segurança do trabalho.
+    \item \textbf{Questionário de Motivação e Engajamento:} Aplicado após o treinamento, avalia o nível de motivação e engajamento dos participantes durante a experiência, permitindo comparação direta entre os métodos.
+\end{itemize}
+
+\subsection{Instrumentos aplicados exclusivamente ao grupo experimental}
+
+\begin{itemize}
+    \item \textbf{\textit{System Usability Scale} (SUS):} Instrumento padronizado para mensurar a usabilidade e aceitação do sistema pelos usuários. Será utilizada a versão validada para o português brasileiro.
+    \item \textbf{\textit{iGroup Presence Questionnaire} (IPQ):} Avalia a sensação de presença e imersão no ambiente virtual. Será utilizada a versão portuguesa validada por \citeonline{vasconcelosraposo2016}, com adaptações lexicais mínimas para o português brasileiro.
+\end{itemize}
+
+\subsection{Teste de Retenção (condicional)}
+
+Sujeito à viabilidade de cronograma, um teste de retenção de conhecimento equivalente ao pós-teste será aplicado entre 30 e 45 dias após o treinamento a ambos os grupos, com o objetivo de verificar a permanência do aprendizado ao longo do tempo. Caso inviável, esta etapa será declarada como limitação do estudo e recomendada para investigações futuras.
+
+\section{Procedimento de Coleta}
+
+A coleta de dados seguirá a seguinte sequência para ambos os grupos:
+
+\begin{enumerate}
+    \item Assinatura do \gls{TCLE}
+    \item Aplicação do pré-teste de conhecimento
+    \item Realização do treinamento (RV ou vídeo instrucional, conforme o grupo)
+    \item Aplicação do pós-teste de conhecimento
+    \item Aplicação do questionário de motivação e engajamento
+    \item Aplicação do SUS e IPQ \textit{(somente grupo experimental)}
+    \item Aplicação do teste de retenção \textit{(ambos os grupos, condicional)}
+\end{enumerate}
+
+\section{Avaliação Qualitativa}
+
+Após a conclusão do treinamento, será conduzida uma análise qualitativa baseada em entrevistas semiestruturadas com os participantes do grupo experimental. Essas entrevistas terão como objetivos explorar a experiência subjetiva dos participantes, coletar percepções sobre o realismo e a utilidade do treinamento em RV, identificar pontos fortes e fracos da abordagem e obter sugestões de melhoria para fases futuras do sistema.
