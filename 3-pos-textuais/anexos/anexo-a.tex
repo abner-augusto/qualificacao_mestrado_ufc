@@ -1,44 +1,108 @@
-\anexo{Roteiro da Experiência}
+\anexo{Roteiro Detalhado dos Cenários de Treinamento em Realidade Virtual}
 \label{an:roteiro}
 
-\textbf{``Segurança no Canteiro de Obras: Prevenção de Quedas e Uso de EPIs''}
+\textbf{Segurança em Trabalhos em Altura --- NR-1, NR-18 e NR-35}
 
 \textit{Fase 1 do Sistema Modular de Treinamento em Realidade Virtual}
 
-\section*{1. Introdução (Cena Inicial)}
+\textit{Plataforma: Meta Quest 3 --- Normas de referência: NR-1, NR-18 e NR-35}
+
+\section*{1. Visão Geral da Experiência}
+
+A experiência é estruturada em quatro fases sequenciais: introdução/\textit{onboarding}, Cenário 1 (Seleção de EPIs), Cenário 2 (Trabalho em Altura) e conclusão com avaliação. O cenário principal --- trabalho em altura --- simula uma \textbf{inspeção pré-atividade em andaime fachadeiro}, escolhido por ser o contexto mais representativo e pedagógico para treinamento de NR-35 na construção civil brasileira.
+
+A escolha do andaime fachadeiro justifica-se por: (a) ser o contexto mais frequente de acidentes fatais por queda na construção civil brasileira; (b) permitir o exercício simultâneo de EPIs e EPCs; (c) ser a inspeção pré-atividade uma exigência direta da NR-35 (item 35.4) e NR-18 (seção 18.15); e (d) oferecer escala física compatível com o espaço de rastreamento do Meta Quest 3.
+
+A duração total estimada é de 12 a 18 minutos, distribuídos da seguinte forma:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{clll}
+\hline
+\textbf{Fase} & \textbf{Nome} & \textbf{Objetivo Principal} & \textbf{Tempo} \\
+\hline
+0 & Onboarding & Ambientar e ensinar interações & 2--3 min \\
+1 & Seleção de EPIs & Identificar e vestir EPIs corretos & 3--5 min \\
+2 & Inspeção em Andaime & Identificar e corrigir irregularidades & 5--8 min \\
+3 & Conclusão & Relatório e reforço pedagógico & 2 min \\
+\hline
+\end{tabular}
+\end{table}
+
+\section*{2. Fase 0 --- Introdução e Onboarding}
+
+\textbf{Ambiente:} O usuário inicia a experiência no térreo de um canteiro de obras virtual, em uma área de apoio coberta. O ambiente contém elementos visuais que contextualizam uma obra real: cones de sinalização, materiais empilhados e uma edificação em construção ao fundo com andaimes visíveis.
+
+\textbf{Sequência:}
 
 \begin{enumerate}
-    \item O usuário é recebido em um canteiro de obras virtual por um instrutor virtual (engenheiro de segurança do trabalho).
-    \item Breve apresentação sobre a importância das normas de segurança NR-18 e NR-35, contextualizando os riscos de trabalho em altura.
-    \item Instrução sobre como interagir com o ambiente virtual: movimentação, manipulação de objetos e sistema de \textit{feedback}.
+    \item \textbf{Boas-vindas:} Um painel de instruções apresenta o contexto: \textit{``Você foi designado para realizar uma inspeção de segurança em um andaime fachadeiro nesta obra. Antes de subir, você precisa se equipar corretamente.''}
+    \item \textbf{Contextualização normativa:} Apresentação breve sobre NR-18 e NR-35: \textit{``Conforme a NR-35, trabalho em altura é toda atividade acima de 2 metros com risco de queda. Antes de iniciar, você deve selecionar os EPIs adequados e inspecionar as condições do local.''}
+    \item \textbf{Tutorial de interação:} O usuário pratica pegar e soltar um objeto neutro (cone de sinalização), confirmando que compreende o sistema de agarrar e soltar com as mãos virtuais.
+    \item \textbf{Transição:} O painel indica ao usuário que se dirija à bancada de EPIs para iniciar o treinamento.
 \end{enumerate}
 
-\section*{2. Seleção de EPIs (Cena 1)}
+\section*{3. Cenário 1 --- Seleção de EPIs}
 
-\textbf{Cenário:} O usuário se encontra em uma área de apoio do canteiro, diante de uma bancada com diversos equipamentos, incluindo EPIs corretos e incorretos para a atividade de trabalho em altura.
+\textbf{Cenário:} O usuário se encontra diante de uma bancada metálica com diversos equipamentos dispostos, contendo tanto EPIs corretos para trabalho em altura quanto itens incorretos/distratores.
 
 \textbf{Objetivos de aprendizagem:}
 
 \begin{itemize}
     \item Identificar os EPIs obrigatórios para trabalho em altura conforme NR-35
-    \item Distinguir EPIs adequados de equipamentos inadequados ou com defeito
+    \item Distinguir EPIs adequados de equipamentos inadequados ou substitutos incorretos
 \end{itemize}
 
-\textbf{Interatividade:}
+\textbf{Itens disponíveis na bancada:}
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{lcp{5.5cm}}
+\hline
+\textbf{Item} & \textbf{Correto?} & \textbf{Motivo / Feedback se incorreto} \\
+\hline
+Cinto tipo paraquedista & Sim & EPI obrigatório \\
+Capacete com jugular & Sim & EPI obrigatório \\
+Luvas de proteção & Sim & EPI obrigatório \\
+Botina de segurança & Sim & EPI obrigatório \\
+Óculos de proteção & Sim & EPI obrigatório \\
+Capacete sem jugular & Não & NR-35 exige capacete com jugular para trabalho em altura \\
+Cinto abdominal simples & Não & NR-35 exige cinto tipo paraquedista, não abdominal \\
+Luva de látex fina & Não & Inadequada para manuseio de estruturas metálicas \\
+Chinelo/calçado aberto & Não & NR-18 proíbe calçados abertos em canteiro de obras \\
+Colete refletivo & Opcional & Válido, mas não obrigatório para esta atividade específica \\
+\hline
+\end{tabular}
+\end{table}
+
+\textbf{Mecânica de interação:} O usuário pega cada EPI da bancada e leva até a zona de encaixe correspondente no corpo do avatar. Se o item for correto, o encaixe é confirmado com \textit{feedback} visual (destaque verde) e háptico. Se o item for incorreto, ele retorna à bancada e um aviso explica o motivo da rejeição.
+
+\textbf{Sequência de equipagem (modo guiado, de baixo para cima conforme NR-35):}
 
 \begin{enumerate}
-    \item O usuário deve selecionar os EPIs corretos para a atividade que será realizada: cinto de segurança tipo paraquedista, capacete com jugular, luvas e botina de segurança.
-    \item Caso selecione um EPI incorreto ou com defeito visível, o sistema fornece \textit{feedback} imediato explicando o problema.
-    \item Após a seleção correta, o instrutor virtual confirma os itens escolhidos e o usuário avança para o próximo cenário já equipado.
+    \item Equipar botina de segurança nos pés
+    \item Equipar luvas nas mãos
+    \item Equipar óculos de proteção no rosto
+    \item Equipar capacete com jugular na cabeça
+    \item Vestir cinto paraquedista no torso
 \end{enumerate}
 
-\textbf{Pontuação:} Acerto na seleção de cada EPI obrigatório; penalização por seleção de item inadequado.
+\textbf{Pontuação máxima:} 650 pontos (100 a 200 pontos por EPI correto; penalização de 50 pontos por tentativa de equipar item incorreto).
 
-\textbf{Mensagem educativa:} \textit{``Antes de iniciar qualquer trabalho em altura, verifique se todos os EPIs estão em bom estado e são adequados para a atividade. Nunca substitua um EPI certificado por improvisações.''}
+\textbf{Mensagem educativa:} \textit{``Antes de iniciar qualquer trabalho em altura, verifique se todos os EPIs estão em bom estado e são adequados para a atividade. Nunca substitua um EPI certificado por improvisações. O cinto tipo paraquedista é obrigatório --- cintos abdominais não são permitidos para trabalho em altura.''}
 
-\section*{3. Trabalho em Altura (Cena 2)}
+\section*{4. Cenário 2 --- Trabalho em Altura: Inspeção em Andaime Fachadeiro}
 
-\textbf{Cenário:} O usuário se encontra em um andaime de uma edificação em construção. O ambiente contém irregularidades deliberadas: ausência de guarda-corpo em um trecho, cinto de segurança desconectado do ponto de ancoragem e rodapé ausente em parte da plataforma.
+\textbf{Aderência normativa:}
+\begin{itemize}
+    \item NR-35, item 35.4: exige análise de risco e inspeção prévia das condições do local antes de iniciar trabalho em altura
+    \item NR-18, seção 18.15: andaimes devem ter guarda-corpo, rodapé, tela de proteção e inspeção diária
+    \item NR-35, item 35.5: o trabalhador deve estar conectado a ponto de ancoragem certificado durante toda a atividade
+    \item NR-1, item 1.7: capacitação deve incluir identificação de riscos e procedimentos de prevenção
+\end{itemize}
+
+\textbf{Cenário:} O usuário é teletransportado para a plataforma de trabalho de um andaime fachadeiro, a aproximadamente 6 metros de altura na fachada de uma edificação em construção. O ambiente contém elementos corretos (guarda-corpo no lado esquerdo, ponto de ancoragem certificado, linha de vida horizontal) e irregularidades deliberadas que o usuário deve identificar e corrigir.
 
 \textbf{Objetivos de aprendizagem:}
 
@@ -48,28 +112,51 @@
     \item Demonstrar o procedimento correto de conexão do cinto ao ponto de ancoragem certificado
 \end{itemize}
 
-\textbf{Interatividade:}
+\textbf{Irregularidades deliberadas (modo livre --- o usuário pode corrigi-las em qualquer ordem):}
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{clp{3.5cm}p{3cm}}
+\hline
+\textbf{\#} & \textbf{Irregularidade} & \textbf{Norma Violada} & \textbf{Consequência se ignorada} \\
+\hline
+1 & Guarda-corpo ausente no lado direito & NR-18 §18.15 & Animação de ferramenta caindo pela borda desprotegida \\
+2 & Rodapé ausente em trecho do lado esquerdo & NR-18 §18.15 & Animação de material deslizando e caindo \\
+3 & Cinto desconectado do ponto de ancoragem & NR-35 §35.5 & Simulação de queda (\textit{camera shake} + \textit{fade to black}) \\
+4 & Tela de proteção caída/solta na fachada & NR-18 §18.15 & Alerta de risco para trabalhadores no nível inferior \\
+\hline
+\end{tabular}
+\end{table}
+
+\textbf{Sistema de consequências:} Se o usuário tentar iniciar a atividade sem ter corrigido todas as irregularidades, o sistema dispara a consequência correspondente ao risco não corrigido. Após cada consequência, a experiência pausa e apresenta \textit{feedback} educativo antes de permitir nova tentativa. O evento é registrado como uma violação de segurança para análise posterior.
+
+\textbf{Pontuação máxima:} 650 pontos (100 a 200 pontos por irregularidade corrigida; penalização de 100 pontos por tentativa de avanço sem correção).
+
+\textbf{Mensagem educativa:} \textit{``Em trabalhos em altura, nunca inicie a atividade sem verificar a integridade dos EPCs e a correta fixação do cinto de segurança. A inspeção visual diária do andaime é obrigatória pela NR-18. Um único ponto de ancoragem não verificado pode custar uma vida.''}
+
+\section*{5. Fase Final --- Conclusão e Avaliação}
+
+Após a conclusão de ambos os cenários, o sistema apresenta automaticamente a tela de encerramento com:
 
 \begin{enumerate}
-    \item O usuário deve inspecionar o andaime e identificar cada irregularidade presente, interagindo com os elementos de risco.
-    \item Para cada risco identificado, o usuário deve executar a correção correspondente: instalar o guarda-corpo, conectar o cinto ao ponto de ancoragem e sinalizar a ausência do rodapé.
-    \item Caso o usuário tente avançar sem corrigir as irregularidades, o sistema simula a consequência do risco: animação de queda ou queda de objeto, seguida de \textit{feedback} educativo explicando o que deveria ter sido feito.
-    \item Após a correção de todas as irregularidades, o instrutor virtual apresenta um resumo das boas práticas demonstradas.
+    \item \textbf{Resumo de desempenho:} pontuação total, tempo de execução e tarefas concluídas/falhadas.
+    \item \textbf{Destaques pedagógicos:} acertos principais e pontos de melhoria identificados ao longo da sessão.
+    \item \textbf{Reforço normativo:} resumo das principais diretrizes da NR-18 e NR-35 aplicadas nos cenários.
+    \item \textbf{Exportação de dados:} geração automática do registro da sessão em formato \gls{JSON} para análise posterior pelo pesquisador.
 \end{enumerate}
 
-\textbf{Pontuação:} Pontos por identificação e correção de cada irregularidade; penalização por tentativa de avanço sem correção.
+\section*{6. Próximos Passos}
 
-\textbf{Mensagem educativa:} \textit{``Em trabalhos em altura, nunca inicie a atividade sem verificar a integridade dos EPCs e a correta fixação do cinto de segurança. Um único ponto de ancoragem não verificado pode custar uma vida.''}
-
-\section*{4. Conclusão e Avaliação Final}
+Este roteiro corresponde à Fase 1 do sistema modular. Os próximos passos previstos para implementação são:
 
 \begin{enumerate}
-    \item O instrutor virtual apresenta um resumo das ações realizadas pelo usuário ao longo da experiência, destacando acertos e pontos de melhoria.
-    \item O usuário recebe seu relatório de desempenho gerado automaticamente pelo \textit{SessionLogger}, contendo pontuação total, tarefas concluídas e tempo de execução.
-    \item O instrutor reforça as principais diretrizes das NR-18 e NR-35 aplicadas nos cenários.
-    \item O usuário recebe um certificado virtual de conclusão da Fase 1 do treinamento.
+    \item Criação dos assets 3D do canteiro, andaime e EPIs interagíveis
+    \item Configuração das zonas de encaixe para guarda-corpo, rodapé e ponto de ancoragem
+    \item Desenvolvimento das animações de consequência (queda de objeto e simulação de queda)
+    \item Implementação da transição entre cenas com \textit{fade-to-black}
+    \item Validação do roteiro com engenheiros de segurança e instrutores de NR-35 antes da implementação final
+    \item \textit{Playtesting} com 3 a 5 usuários-piloto para ajuste de tempos, dificuldade e clareza das instruções
 \end{enumerate}
 
-\section*{5. Nota sobre Expansão Futura}
-
-Este roteiro corresponde à Fase 1 do sistema modular. Fases futuras preveem a incorporação de cenários adicionais como queda de objetos, escavações e contenções, e inspeção geral de canteiro, a serem desenvolvidos e validados em parceria com especialistas e entidades do setor da construção civil.
+Fases futuras do sistema preveem a incorporação de cenários adicionais, como queda de objetos, escavações e contenções, e inspeção geral de canteiro, a serem desenvolvidos e validados em parceria com especialistas e entidades do setor da construção civil.
