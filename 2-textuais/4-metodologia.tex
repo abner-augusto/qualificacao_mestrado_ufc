@@ -9,12 +9,13 @@ Essas consultas visam validar os principais elementos que devem ser priorizados 
 
 \section{Ferramentas Tecnológicas}
 
-O sistema será desenvolvido utilizando as seguintes tecnologias:
+O sistema foi desenvolvido utilizando as seguintes tecnologias:
 
 \begin{itemize}
-    \item \textbf{Plataforma:} Unity 3D
+    \item \textbf{Motor:} Unity 6 LTS (versão 6000.3.8f1)
     \item \textbf{Linguagem de Programação:} C\#
-    \item \textbf{Dispositivos:} Oculus Quest 3 ou outro dispositivo portátil de Realidade Virtual equivalente.
+    \item \textbf{\gls{SDK} de RV:} Meta XR SDK (versão 201.0.0)
+    \item \textbf{Dispositivo alvo:} Meta Quest 3, com rastreamento de mãos (\textit{hand tracking}) como modalidade primária de entrada.
 \end{itemize}
 
 \section{Estrutura dos Cenários Virtuais}
@@ -23,11 +24,11 @@ Os cenários de treinamento serão definidos a partir de consultas com especiali
 
 \textbf{Cenário 1 -- Seleção de EPIs}
 
-Cena introdutória na qual o usuário é recebido por um instrutor virtual e deve selecionar os EPIs adequados para a atividade de trabalho em altura que será realizada em seguida. O objetivo é desenvolver o reconhecimento dos equipamentos obrigatórios antes da exposição ao cenário de risco.
+Cena introdutória na qual o usuário é recebido por um instrutor virtual e deve selecionar e equipar os EPIs adequados ao trabalho em altura que realizará em seguida. O grupo reúne cinco tarefas em modo sequencial, com limite de 270 segundos: equipar botina de segurança, luvas, óculos de proteção, capacete com jugular (exigido pela NR-35) e cinturão de segurança tipo paraquedista. A bancada apresenta, além dos itens corretos, distratores que forçam decisões fundamentadas na norma: capacete sem jugular, cinto abdominal (vedado pela NR-35 para trabalho em altura), luva de látex (inadequada para estruturas metálicas), calçado aberto (vedado pela NR-18) e colete refletivo (não pontuado). O objetivo é desenvolver o reconhecimento dos equipamentos obrigatórios antes da exposição ao cenário de risco.
 
 \textbf{Cenário 2 -- Trabalho em Altura}
 
-Cenário principal no qual o usuário é exposto a uma situação de trabalho em andaime com irregularidades deliberadas -- ausência ou instalação incorreta de guarda-corpos, uso inadequado do cinto de segurança e ausência de pontos de ancoragem certificados. O usuário deve identificar os riscos presentes, corrigir as irregularidades e demonstrar o uso correto dos EPIs. \textit{Feedback} imediato é fornecido a cada ação.
+Cenário principal de inspeção de um andaime fachadeiro com irregularidades deliberadas. O grupo reúne quatro tarefas em modo de ordem livre, com limite de 300 segundos e dependência da conclusão do Cenário 1: conectar o talabarte a um ponto de ancoragem certificado (tipo A1, conforme a ABNT NBR 16325 \cite{nbr16325}), instalar guarda-corpo ausente (NR-18, item 18.15), instalar rodapé ausente (NR-18, item 18.15) e sinalizar a queda de uma rede de proteção. Caso o usuário inicie a atividade sem corrigir as irregularidades, o sistema dispara consequências --- como a queda de uma ferramenta pela borda desprotegida e uma simulação de queda por talabarte desconectado ---, cada uma registrada como violação de segurança com penalização na pontuação. \textit{Feedback} imediato é fornecido a cada ação.
 
 O sistema prevê expansão modular para novos cenários em fases futuras, como queda de objetos, soterramentos e inspeção geral de canteiro, conforme validação com especialistas e parceiros institucionais.
 
@@ -40,11 +41,11 @@ A pesquisa contará com 30 participantes, divididos aleatoriamente em dois grupo
     \item \textbf{Grupo Controle (Treinamento Tradicional):} Participará do treinamento por meio de vídeo instrucional com conteúdo equivalente ao apresentado no sistema de RV.
 \end{itemize}
 
-Os participantes poderão ser trabalhadores da construção civil ou estudantes da área. Dado o caráter exploratório e pioneiro desta pesquisa no contexto brasileiro -- onde não foram identificados estudos controlados sobre RV aplicada à segurança do trabalho sob as normas regulamentadoras nacionais -- o estudo se configura como um \textbf{estudo piloto}, cujos dados fornecerão subsídios para o dimensionamento amostral de pesquisas futuras com maior poder estatístico.
+Os participantes poderão ser trabalhadores da construção civil ou estudantes da área. A alocação aleatória entre os grupos experimental e controle caracteriza o desenho como um \textbf{estudo piloto randomizado controlado}, de caráter exploratório e pioneiro no contexto brasileiro -- onde não foram identificados estudos controlados sobre RV aplicada à segurança do trabalho sob as normas regulamentadoras nacionais. Com $n = 30$, a análise prioriza a estimativa de \textbf{tamanhos de efeito} e respectivos intervalos de confiança, mais informativos que a significância isolada nesse tamanho amostral, fornecendo subsídios para o dimensionamento de pesquisas futuras com maior poder estatístico.
 
 \section{Instrumentos de Avaliação}
 
-Os instrumentos foram selecionados de forma a cobrir as três hipóteses do estudo com o mínimo de sobrecarga para os participantes, garantindo viabilidade de aplicação em contexto de pesquisa piloto.
+Os instrumentos foram selecionados para cobrir as três hipóteses do estudo com o mínimo de sobrecarga para os participantes, garantindo viabilidade de aplicação em contexto de pesquisa piloto.
 
 \subsection{Instrumentos aplicados a ambos os grupos}
 
