@@ -1,9 +1,9 @@
 \chapter{Desenvolvimento e Arquitetura do Sistema}
 \label{cap:arquitetura}
 
-O Sistema de Realidade Virtual para Treinamento de Segurança em Canteiro de Obras foi desenvolvido em Unity 6 LTS com o Meta XR SDK, para execução no Meta Quest 3 com rastreamento de mãos como modalidade primária de entrada. A arquitetura atende a dois propósitos: criar e executar cenários de treinamento baseados em situações críticas reais da construção civil e avaliar de forma sistemática o desempenho do usuário, com foco na identificação de comportamentos seguros diante dos riscos simulados.
+O Sistema de Realidade Virtual para Treinamento de Segurança em Canteiro de Obras foi desenvolvido em Unity 6 LTS com o Meta XR SDK, para execução no Meta Quest 3 com rastreamento de mãos como modalidade primária de entrada. A arquitetura atende a dois propósitos: criar e executar cenários de treinamento baseados em situações críticas reais da construção civil e avaliar sistematicamente o desempenho do usuário, com foco na identificação de comportamentos seguros diante dos riscos simulados.
 
-Em vez de concentrar interação, renderização, gerência de estado e avaliação de regras nos mesmos componentes --- prática comum em protótipos de motor de jogo, mas que dificulta manutenção e evolução ---, o sistema adota uma \gls{EDA}. A lógica de domínio reside em classes C\# puras, independentes do motor (sufixo \texttt{Core}), envolvidas por adaptadores \texttt{MonoBehaviour} que fazem a ponte com a cena, seguindo o padrão \textit{ports-and-adapters}. As camadas coordenam-se por meio de eventos tipados publicados em um barramento central, sem manter referências diretas entre si. Essa separação sustenta a testabilidade, a resiliência a atualizações de \gls{SDK} e a autoria de cenários sem alteração de código, propriedades retomadas no Capítulo~\ref{cap:validacao}.
+Em vez de concentrar interação, renderização, gerência de estado e avaliação de regras nos mesmos componentes --- prática comum em protótipos de motor de jogo, mas que dificulta manutenção e evolução ---, o sistema adota uma \gls{EDA}. A lógica de domínio reside em classes C\# puras, independentes do motor (sufixo \texttt{Core}), envolvidas por adaptadores \texttt{MonoBehaviour} que fazem a ponte com a cena, seguindo o padrão \textit{ports-and-adapters}. As camadas coordenam-se por eventos tipados publicados em um barramento central, sem referências diretas entre si. Essa separação sustenta a testabilidade, a resiliência a atualizações de \gls{SDK} e a autoria de cenários sem alteração de código, propriedades retomadas no Capítulo~\ref{cap:validacao}.
 
 \section{Visão Geral em Camadas}
 
@@ -36,7 +36,7 @@ A arquitetura organiza o sistema em sete camadas conectadas por um \texttt{Event
 
 \section{Catálogo de Eventos}
 
-O protótipo define 18 eventos lógicos, dos quais 16 são despachados como canais tipados do \texttt{EventBus}, implementados por 13 classes de carga (eventos correlatos compartilham uma classe distinguida por um \textit{enum} de fase). Os módulos nunca inspecionam entrada bruta nem consultam estado externo diretamente. A Tabela~\ref{tab:eventos} resume os grupos de eventos e seus principais publicadores.
+O protótipo define 18 eventos lógicos, dos quais 16 são despachados como canais tipados do \texttt{EventBus}, implementados por 13 classes de carga (eventos correlatos compartilham uma classe distinguida por um \textit{enum} de fase). Os módulos nunca inspecionam entrada bruta nem consultam estado externo. A Tabela~\ref{tab:eventos} resume os grupos de eventos e seus principais publicadores.
 
 \begin{table}[htb]
     \centering
@@ -103,4 +103,4 @@ Cinco decisões merecem justificativa.
 
 \section{Generalidade e Extensibilidade}
 
-Como a lógica de domínio é independente do motor e os cenários são definidos por dados, a arquitetura oferece \textit{afordância} para múltiplos domínios de treinamento além da construção civil --- por exemplo, procedimentos clínicos, montagem industrial ou resposta a emergências. Trata-se de uma propriedade de projeto: o protótipo foi implementado e validado apenas no domínio de construção sob a NR-18 e a NR-35, e a transferência empírica para outros contextos regulatórios permanece como trabalho futuro. No mesmo sentido, um \textit{backend} distribuído poderia sustentar sessões multiusuário substituindo o \texttt{EventBus} em processo, sem alterar as camadas de aplicação.
+Como a lógica de domínio é independente do motor e os cenários são definidos por dados, a arquitetura oferece \textit{afordância} para múltiplos domínios de treinamento além da construção civil --- por exemplo, procedimentos clínicos, montagem industrial ou resposta a emergências. É uma propriedade de projeto: o protótipo foi implementado e validado apenas no domínio de construção sob a NR-18 e a NR-35, e a transferência empírica para outros contextos regulatórios permanece como trabalho futuro. No mesmo sentido, um \textit{backend} distribuído poderia sustentar sessões multiusuário substituindo o \texttt{EventBus} em processo, sem alterar as camadas de aplicação.
