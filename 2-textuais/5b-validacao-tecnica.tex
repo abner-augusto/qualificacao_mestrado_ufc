@@ -1,0 +1,49 @@
+\chapter{Validação Técnica do Sistema}
+\label{cap:validacao}
+
+A arquitetura descrita no Capítulo~\ref{cap:arquitetura} foi avaliada quanto a propriedades de engenharia de software --- modularidade, testabilidade, extensibilidade e resiliência a atualizações de \gls{SDK} ---, e não quanto à eficácia pedagógica, que é objeto da avaliação com usuários (Capítulo~\ref{cap:metodologia}). Esta validação constitui contribuição própria do trabalho: ela demonstra que a lógica de negócio do sistema pode ser exercida e verificada fora do motor de jogo, o que sustenta a decisão de prosseguir para o estudo com participantes.
+
+A avaliação emprega duas camadas complementares. A primeira valida a correção de módulos isolados; a segunda valida o desacoplamento no nível do sistema.
+
+\section{Camada 1 -- Suíte de Testes Unitários}
+
+Uma suíte de testes em C\# puro exercita cada módulo central de forma independente, sem qualquer dependência do \textit{runtime} do Unity. Os módulos cobertos incluem \texttt{ScoreService}, \texttt{TaskManagerCore}, \texttt{PPEManager} e \texttt{SessionLoggerCore}. Os testes verificam a pontuação correta para seleções de EPI válidas e inválidas, a validação de equipamentos contra os requisitos da NR-35, as transições de estado das tarefas e o formato da exportação em \gls{JSON} da sessão.
+
+Quarenta testes são executados com sucesso em aproximadamente 150~ms, sem inicializar o \textit{runtime} do motor. Além de verificar a correção, a propriedade de isolamento mostrou-se diagnosticamente valiosa: um defeito lógico no \texttt{SafetyRuleEngineCore}, envolvendo registro ambíguo de \textit{handlers}, foi reproduzido e localizado inteiramente na suíte de testes, eliminando, em uma única execução, uma família de hipóteses específicas do Unity.
+
+\section{Camada 2 -- Executor por Linha de Comando}
+
+Um executor por linha de comando (\textit{harness} de \gls{CLI}) em C\# puro carrega os dados de cenário, instancia todos os módulos de lógica, simula entradas do usuário e dispara eventos pelo \texttt{EventBus}, produzindo a transcrição completa de uma sessão sem motor gráfico, dispositivo ou instalação do Unity. Quando os mesmos módulos executam em contexto de console, o desacoplamento da arquitetura é exercido na prática, e não apenas afirmado por inspeção do código.
+
+O executor não comprova que todo módulo roda inalterado em ambos os ambientes --- componentes como o \texttt{PPEManager} são legitimamente acoplados à física do motor. O que ele demonstra é que a arquitetura expõe um protocolo de eventos bem definido, centrado no \texttt{EventBus} e em contratos de carga compartilhados, ao qual novos participantes (\textit{stubs}, agentes externos, ferramentas de análise) podem se juntar sem modificar os módulos existentes.
+
+\section{Resultados}
+
+A Tabela~\ref{tab:validacao} resume os indicadores de qualidade obtidos sobre o protótipo. A migração do Meta XR SDK ao longo de cinco atualizações não exigiu modificação de nenhum módulo do núcleo de domínio ou do subsistema de avaliação: os seis arquivos que importam o SDK permaneceram confinados às camadas de publicadores e adaptadores. A adição de um segundo cenário exigiu apenas a edição de \textit{assets} de dados, sem recompilação de lógica.
+
+\begin{table}[htb]
+    \centering
+    \caption{Indicadores de qualidade da validação técnica do protótipo.}
+    \label{tab:validacao}
+    \begin{tabular}{lr}
+        \toprule
+        \textbf{Indicador} & \textbf{Valor} \\
+        \midrule
+        Testes unitários aprovados (sem Unity)        & 40 / 40 \\
+        Tempo de execução dos testes (sem Unity)      & $\sim$150 ms \\
+        Módulos modificados em atualização de SDK     & 0 \\
+        Arquivos que importam o Meta XR SDK           & 6 \\
+        Arquivos independentes do motor               & 42 \\
+        Linhas de código do núcleo de domínio         & 1.127 \\
+        Sessão completa executada sem motor (CLI)     & Sim \\
+        \bottomrule
+    \end{tabular}
+
+    {\footnotesize Fonte: elaborado pelo autor.}
+\end{table}
+
+Esses resultados sustentam quatro propriedades no protótipo: novos cenários foram criados sem alteração de módulos de lógica; as atualizações de SDK ficaram contidas nas camadas de borda; a pilha de lógica de negócio executou fora do motor gráfico, viabilizando testes automatizados; e o registrador de sessão foi integrado sem modificar módulos existentes, de modo consistente com a propriedade aberto/fechado do projeto orientado a eventos.
+
+\section{Limitações da Avaliação Técnica}
+
+A avaliação apoia-se em um único protótipo, voltado à construção civil sob a NR-18 e a NR-35; embora o protocolo de eventos e a estrutura de biblioteca compartilhada sejam independentes de domínio, sua transferência para outros contextos regulatórios carece de demonstração empírica. O parâmetro de comparação monolítico baseia-se na arquitetura predominante na literatura, não em uma reimplementação controlada do mesmo cenário. Por fim, a avaliação reporta indicadores estruturais (arquivos independentes do motor, confinamento de importações de SDK, adições de módulo sem modificação), sem computar métricas formais de acoplamento, cuja inclusão é recomendada para trabalhos futuros.
