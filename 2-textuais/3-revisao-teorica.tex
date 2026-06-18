@@ -9,7 +9,7 @@ A pesquisa também revelou que a retenção do conhecimento a longo prazo foi ma
 
 \section{Aplicabilidade da Realidade Virtual no Treinamento em Segurança na Construção Civil}
 
-A utilização da Realidade Virtual (RV) no treinamento em segurança na construção civil tem sido amplamente discutida na literatura devido ao seu potencial de oferecer um ambiente imersivo e interativo para a capacitação dos trabalhadores. \citeonline[p.~9-10]{akindele2024} destacam que a RV permite uma experiência de aprendizagem envolvente e realista, contribuindo para que os trabalhadores compreendam de forma mais adequada os riscos e adotem estratégias apropriadas para lidar com diferentes situações de perigo nos canteiros de obras. Essa tecnologia permite criar ambientes simulados para identificação de riscos, treinamento operacional e educação em segurança \cite{zhou2019,wang2020,akindele2024}.
+A utilização da Realidade Virtual (RV) no treinamento em segurança na construção civil tem sido amplamente discutida na literatura devido ao seu potencial de oferecer um ambiente imersivo e interativo para a capacitação dos trabalhadores. Revisões sistemáticas com meta-análise consolidam essa evidência: \citeonline{scorgie2024} e \citeonline{man2024} concluem que o treinamento em RV supera a instrução tradicional em aquisição e retenção de conhecimento e em mudança de comportamento de segurança, e estudos recentes corroboram o efeito para a identificação de perigos e os cenários de queda de altura aqui priorizados \cite{guo2024,alzarrad2024}. \citeonline[p.~9-10]{akindele2024} destacam que a RV permite uma experiência de aprendizagem envolvente e realista, contribuindo para que os trabalhadores compreendam de forma mais adequada os riscos e adotem estratégias apropriadas para lidar com diferentes situações de perigo nos canteiros de obras. Essa tecnologia permite criar ambientes simulados para identificação de riscos, treinamento operacional e educação em segurança \cite{zhou2019,wang2020,akindele2024}.
 
 No que diz respeito à identificação de perigos, a RV permite que os trabalhadores interajam com ambientes virtuais projetados para replicar situações reais de risco. Segundo \citeonline[p.~10]{akindele2024}, estudos demonstram que a utilização da RV melhora a capacidade de identificação de riscos em relação a métodos tradicionais, como fotografias e documentação técnica, tornando a detecção mais precisa e eficaz. A tecnologia oferece um ambiente seguro para simulação de cenários de perigo, como trabalho em altura e manuseio de equipamentos, sem riscos reais \cite{li2018,sacks2019,akindele2024}. Estudos comparativos indicam que a simulação imersiva aumenta a retenção do conhecimento e a velocidade de resposta a situações de risco quando comparada a métodos convencionais, como manuais e apresentações \cite{bhoir2015,akindele2024}.
 
@@ -37,7 +37,7 @@ Em suma, a literatura evidencia o potencial da RV para transformar o treinamento
 
 \section{Métodos de Avaliação}
 
-Com base dos artigos selecionados, é possível fazer observações de como a efetividade dessas experiências em RV foram avaliadas por outros pesquisadores:
+A efetividade dessas experiências em RV foi avaliada na literatura de três maneiras principais:
 
 \subsection{Abotaleb et al. (2023)}
 
@@ -110,4 +110,9 @@ Através dos artigos lidos, os problemas mais identificados foram:
 \begin{itemize}
     \item A NR-18 \cite{brasil2025nr18} estabelece requisitos específicos para segurança, como uso de EPIs, sinalização e prevenção de quedas. Contudo, protótipos existentes de RV (majoritariamente desenvolvidos no exterior) não incorporam esses padrões brasileiros, limitando sua aplicabilidade local. Não foi encontrado nenhum estudo que teste a eficácia de treinamentos em RV \textbf{sob as NRs}, especialmente em cenários reais de canteiros de obras brasileiros. Não há métricas claras sobre redução de acidentes ou conformidade normativa após o uso dessas ferramentas.
     \item Protótipos internacionais não consideram particularidades da construção civil brasileira, como práticas informais, diversidade de obras (desde grandes empreendimentos urbanos a construções rurais) e desafios socioeconômicos (ex.: capacitação de mão de obra menos especializada).
+\end{itemize}
+
+\textbf{Lacuna na arquitetura de software dos sistemas de RV:}
+\begin{itemize}
+    \item A literatura de RV para segurança descreve funções, cenários e resultados de aprendizagem, mas raramente documenta a \textit{arquitetura interna} do software --- estrutura de módulos, comunicação, manutenção e extensibilidade. \citeonline{obukhov2022} identificam que arquiteturas monolíticas em complexos de treinamento virtual geram alto acoplamento entre simulação, renderização e avaliação, encarecendo a evolução e a manutenção, e recomendam decomposição arquitetural. \citeonline{quamara2024} propõem, de forma análoga, uma arquitetura modular para sistemas de Realidade Estendida que separa entrada, gerência de cena e lógica de aplicação em componentes substituíveis, motivados pela heterogeneidade de hardware e pela frequência de atualizações de \gls{SDK}. Essa lacuna justifica tratar a arquitetura do sistema como uma contribuição de engenharia desta pesquisa, e não como mero detalhe de implementação.
 \end{itemize}
